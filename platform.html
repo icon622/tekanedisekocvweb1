@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MY CV PLATFORM</title>
+   
+    <link rel="stylesheet" href="css/platform.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* Styling for the animated button */
+        .animated-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            margin-top: 20px;
+        }
+
+        .animated-button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .edit-button, .delete-button {
+            margin-left: 5px;
+            cursor: pointer;
+            color: white;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-size: 12px;
+            background-color: #28a745; /* Green for edit */
+        }
+
+        .delete-button {
+            background-color: #dc3545; /* Red for delete */
+        }
+
+        .edit-button:hover {
+            background-color: #218838;
+        }
+
+        .delete-button:hover {
+            background-color: #c82333;
+        }
+
+        /* Container and Form Styles */
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            opacity: 0.95;
+        }
+
+        h2, h3 {
+            color: #333333;
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input, select, button {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"], button {
+            background-color: #007BFF;
+            color: #ffffff;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        input[type="submit"]:hover, button:hover {
+            background-color: #0056b3;
+            box-shadow: 0 5px 15px rgba(0, 91, 187, 0.2);
+        }
+
+        /* Form Field Focus */
+        input:focus, select:focus {
+            outline: none;
+            border-color: #007BFF;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        /* Hover and Focus Effects */
+        input:hover, select:hover {
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Skill, Experience, and Reference Styles */
+        #skillsList div, #experienceList div, #referencesList div {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: box-shadow 0.3s, background-color 0.3s;
+        }
+
+        #skillsList div:hover, #experienceList div:hover, #referencesList div:hover {
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            background-color: #e8e8e8;
+        }
+
+        /* Box Shadow for Forms */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"], input[type="email"], input[type="tel"], input[type="date"], select {
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s;
+        }
+
+        input[type="text"]:hover, input[type="email"]:hover, input[type="tel"]:hover, input[type="date"]:hover, select:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Form Group Hover Effects */
+        .form-group:hover {
+            background-color: #f7f7f7;
+            padding: 15px;
+            border-radius: 10px;
+            transition: background-color 0.3s;
+        }
+
+        /* Remove default button styles inside links */
+        a button {
+            text-decoration: none;
+            background-color: inherit;
+            color: inherit;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Personal Details Form</h2>
+    <form id="detailsForm" action="submit_details.php" method="post">
+        <div class="form-group">
+            <label for="surname">Surname:</label>
+            <input type="text" id="surname" name="surname" required placeholder="e.g Jacob">
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="name">First Name:</label>
+            <input type="text" id="name" name="name" required placeholder="e.g Smith">
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required placeholder="jacobsmith@gmail.com">
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="cellnumber">Cell Number:</label>
+            <input type="tel" id="cellnumber" name="cellnumber" pattern="[0-9]{10}" placeholder="Enter 10-digit number" required aria-placeholder="e.g 067 345 7862">
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required placeholder="1998-04-12">
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="address">Physical Address:</label>
+            <input type="text" id="address" name="address" required placeholder="e.g 144 Eden Street">
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required>
+                <option value="">Select</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+<h3>Education Details</h3>
+<div class="container">
+    <div class="form-group">
+        <label for="institution">Institution Name:</label>
+        <input type="text" id="institution" name="institution" required placeholder="e.g University of Limpopo">
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="degree">Degree:</label>
+        <input type="text" id="degree" name="degree" required placeholder="e.g BSC">
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="fieldofstudy">Field of Study:</label>
+        <input type="text" id="fieldofstudy" name="fieldofstudy" required placeholder="e.g Humanities">
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="startdate">Start Date:</label>
+        <input type="date" id="startdate" name="startdate" required>
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="enddate">End Date (or Expected):</label>
+        <input type="date" id="enddate" name="enddate" required>
+    </div>
+    <br>
+</div>
+
+<h2>Work Skills</h2>
+<div class="container">
+    <div id="skillsList"></div>
+    <input type="text" id="newSkill" placeholder="Add a new skill">
+    <button type="button" onclick="addSkill()">Add Skill</button>
+</div>
+
+<h2>Experience</h2>
+<div class="container">
+    <div id="experienceList"></div>
+    <input type="text" id="newExperience" placeholder="Add a new experience">
+    <button type="button" onclick="addExperience()">Add Experience</button>
+</div>
+
+<h2>References</h2>
+<div class="container">
+    <div id="referencesList"></div>
+    <input type="text" id="newReference" placeholder="Add a new reference">
+    <button type="button" onclick="addReference()">Add Reference</button>
+</div>
+
+<button class="animated-button" onclick="generatePDF()">Generate CV PDF</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+<script>
+    function addSkill() {
+        const skillInput = document.getElementById("newSkill");
+        const skillsList = document.getElementById("skillsList");
+        const skillText = skillInput.value.trim();
+        if (skillText) {
+            const skillDiv = document.createElement("div");
+            skillDiv.innerHTML = skillText + '<span class="edit-button" onclick="editSkill(this)">Edit</span><span class="delete-button" onclick="deleteSkill(this)">Delete</span>';
+            skillsList.appendChild(skillDiv);
+            skillInput.value = ""; // Clear input
+        }
+    }
+
+    function editSkill(button) {
+        const skillDiv = button.parentElement;
+        const skillText = skillDiv.firstChild.textContent.trim();
+        const newSkill = prompt("Edit Skill:", skillText);
+        if (newSkill) {
+            skillDiv.firstChild.textContent = newSkill;
+        }
+    }
+
+    function deleteSkill(button) {
+        const skillDiv = button.parentElement;
+        skillDiv.remove();
+    }
+
+    function addExperience() {
+        const experienceInput = document.getElementById("newExperience");
+        const experienceList = document.getElementById("experienceList");
+        const experienceText = experienceInput.value.trim();
+        if (experienceText) {
+            const expDiv = document.createElement("div");
+            expDiv.innerHTML = experienceText + '<span class="edit-button" onclick="editExperience(this)">Edit</span><span class="delete-button" onclick="deleteExperience(this)">Delete</span>';
+            experienceList.appendChild(expDiv);
+            experienceInput.value = ""; // Clear input
+        }
+    }
+
+    function editExperience(button) {
+        const expDiv = button.parentElement;
+        const experienceText = expDiv.firstChild.textContent.trim();
+        const newExperience = prompt("Edit Experience:", experienceText);
+        if (newExperience) {
+            expDiv.firstChild.textContent = newExperience;
+        }
+    }
+
+    function deleteExperience(button) {
+        const expDiv = button.parentElement;
+        expDiv.remove();
+    }
+
+    function addReference() {
+        const referenceInput = document.getElementById("newReference");
+        const referencesList = document.getElementById("referencesList");
+        const referenceText = referenceInput.value.trim();
+        if (referenceText) {
+            const refDiv = document.createElement("div");
+            refDiv.innerHTML = referenceText + '<span class="edit-button" onclick="editReference(this)">Edit</span><span class="delete-button" onclick="deleteReference(this)">Delete</span>';
+            referencesList.appendChild(refDiv);
+            referenceInput.value = ""; // Clear input
+        }
+    }
+
+    function editReference(button) {
+        const refDiv = button.parentElement;
+        const referenceText = refDiv.firstChild.textContent.trim();
+        const newReference = prompt("Edit Reference:", referenceText);
+        if (newReference) {
+            refDiv.firstChild.textContent = newReference;
+        }
+    }
+
+    function deleteReference(button) {
+        const refDiv = button.parentElement;
+        refDiv.remove();
+    }
+
+    function validateForm() {
+        const surname = document.getElementById("surname").value;
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const cellnumber = document.getElementById("cellnumber").value;
+        const dob = document.getElementById("dob").value;
+        const address = document.getElementById("address").value;
+        const gender = document.getElementById("gender").value;
+        const institution = document.getElementById("institution").value;
+        const degree = document.getElementById("degree").value;
+        const fieldOfStudy = document.getElementById("fieldofstudy").value;
+        const startDate = document.getElementById("startdate").value;
+        const endDate = document.getElementById("enddate").value;
+
+        if (!surname || !name || !email || !cellnumber || !dob || !address || !gender || !institution || !degree || !fieldOfStudy || !startDate || !endDate) {
+            alert("Please fill in all fields.");
+            return false;
+        }
+
+        return true;
+    }
+
+    function generatePDF() {
+        // Validate the form
+        if (!validateForm()) return;
+
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+        // Title Page
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(30);
+        doc.text("MY CV", 105, 100, null, null, "center"); // Centering the title
+        doc.setFontSize(12);
+        doc.text("Created on: " + new Date().toLocaleDateString(), 105, 120, null, null, "center");
+
+        // Add a new page for personal details
+        doc.addPage();
+
+        // Draw border
+        const pageWidth = doc.internal.pageSize.getWidth();
+        const pageHeight = doc.internal.pageSize.getHeight();
+        const margin = 10;
+
+        doc.setDrawColor(0, 0, 0); // Black color for the border
+        doc.rect(margin, margin, pageWidth - 2 * margin, pageHeight - 2 * margin); // Draw the border
+
+        // Get form values
+        const surname = document.getElementById("surname").value;
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const cellnumber = document.getElementById("cellnumber").value;
+        const dob = document.getElementById("dob").value;
+        const address = document.getElementById("address").value;
+        const gender = document.getElementById("gender").value;
+
+        const institution = document.getElementById("institution").value;
+        const degree = document.getElementById("degree").value;
+        const fieldOfStudy = document.getElementById("fieldofstudy").value;
+        const startDate = document.getElementById("startdate").value;
+        const endDate = document.getElementById("enddate").value;
+
+        // Work Skills - Extract only the text node (excluding Edit/Delete)
+        const skills = Array.from(document.querySelectorAll("#skillsList div")).map(skillDiv => {
+            return skillDiv.firstChild.textContent.trim();
+        }).join(", ");
+
+        // Experience - Extract only the text node (excluding Edit/Delete)
+        const experiences = Array.from(document.querySelectorAll("#experienceList div")).map(expDiv => {
+            return expDiv.firstChild.textContent.trim();
+        }).join(", ");
+
+        // References - Extract only the text node (excluding Edit/Delete)
+        const references = Array.from(document.querySelectorAll("#referencesList div")).map(refDiv => {
+            return refDiv.firstChild.textContent.trim();
+        }).join(", ");
+
+        // Add content to the PDF and make titles bold
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(16);
+        doc.text(`Personal Details`, 10, 15);
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(12);
+        doc.text(`Surname: ${surname}`, 10, 20);
+        doc.text(`First Name: ${name}`, 10, 30);
+        doc.text(`Email Address: ${email}`, 10, 40);
+        doc.text(`Cell Number: ${cellnumber}`, 10, 50);
+        doc.text(`Date of Birth: ${dob}`, 10, 60);
+        doc.text(`Physical Address: ${address}`, 10, 70);
+        doc.text(`Gender: ${gender}`, 10, 80);
+
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(16);
+        doc.text(`Education Details`, 10, 100);
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(12);
+        doc.text(`Institution Name: ${institution}`, 10, 110);
+        doc.text(`Degree: ${degree}`, 10, 120);
+        doc.text(`Field of Study: ${fieldOfStudy}`, 10, 130);
+        doc.text(`Start Date: ${startDate}`, 10, 140);
+        doc.text(`End Date: ${endDate}`, 10, 150);
+
+        // Add Work Skills
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(16);
+        doc.text(`Work Skills`, 10, 170);
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(12);
+        doc.text(`Skills: ${skills || "No skills added"}`, 10, 180);
+
+        // Add Experience
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(16);
+        doc.text(`Experience`, 10, 200);
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(12);
+        doc.text(`Experiences: ${experiences || "No experience added"}`, 10, 210);
+
+        // Add References
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(16);
+        doc.text(`References`, 10, 230);
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(12);
+        doc.text(`References: ${references || "No references added"}`, 10, 240);
+
+        // Save the PDF
+        doc.save("my_cv.pdf");
+    }
+</script>
+
+</body>
+</html>
